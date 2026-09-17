@@ -7,11 +7,52 @@
   "appPath": "todo-webapp",
   "entrypoint": "deployment/web-application",
   "exposure": "internet",
-  "dependencies": [
-    { "kind": "component", "name": "todo-api", "description": "Lists, creates, updates and deletes the signed-in End User's todos, reached through /api." },
-    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app", "description": "Signs the End User in through Dataplane Thunder before the app is used." }
+  "stories": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
   ],
   "description": "Single-page Todo app: an End User signs in through Dataplane Thunder, then adds, views, updates, and deletes todos in their personal list, which persists across reloads. Calls the API through the /api path. Does not implement its own sign-in form and does not manage any data beyond the caller's own todos.",
-  "stories": [1, 2, 3, 4, 5, 6],
-  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+  "dependencies": [
+    {
+      "kind": "component",
+      "name": "todo-api",
+      "description": "Lists, creates, updates and deletes the signed-in End User's todos, reached through /api.",
+      "wiring": {
+        "endpoint": {
+          "component": "e2e-todo-20260917-todo-api",
+          "name": "http",
+          "visibility": "project",
+          "envBindings": {
+            "address": "TODO_API_URL"
+          }
+        }
+      }
+    },
+    {
+      "kind": "platform-resource",
+      "name": "user-auth",
+      "description": "Signs the End User in through Dataplane Thunder before the app is used.",
+      "resourceType": "thunder-app",
+      "wiring": {
+        "ref": "e2e-todo-20260917-f6a0bc7f",
+        "envBindings": {
+          "client_id": "USER_AUTH_CLIENT_ID",
+          "issuer": "USER_AUTH_ISSUER",
+          "jwks_url": "USER_AUTH_JWKS_URL",
+          "resource": "USER_AUTH_RESOURCE",
+          "scopes": "USER_AUTH_SCOPES"
+        }
+      }
+    }
+  ],
+  "skillsPinned": [
+    "wireframes",
+    "react-webapp",
+    "oxygen-ui-design-system",
+    "thunder-authentication"
+  ]
 }
