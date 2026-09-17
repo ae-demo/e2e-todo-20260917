@@ -1,0 +1,17 @@
+{
+  "name": "todo-api",
+  "type": "service",
+  "version": "0.1.0",
+  "language": "Ballerina",
+  "buildpack": "docker",
+  "appPath": "todo-api",
+  "entrypoint": "deployment/service",
+  "exposure": "internet",
+  "dependencies": [
+    { "kind": "platform-resource", "name": "todo-db", "resourceType": "postgres-cnpg", "description": "Stores each End User's todos, keyed by owner." },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app", "description": "Verifies the caller's Dataplane Thunder session on every request." }
+  ],
+  "description": "REST API for a signed-in End User's personal todo list: list, create, update, and delete todos scoped to the caller. Sits behind the development API platform gateway, which only forwards requests carrying a valid Dataplane Thunder (T2) token; a Platform Thunder (T1) token is rejected. Does not serve any UI, and does not expose any endpoint outside the caller's own todos.",
+  "stories": [1, 2, 3, 4, 5, 6],
+  "skillsPinned": ["openapi-conventions", "ballerina", "api-management", "thunder-authentication"]
+}

@@ -1,0 +1,15 @@
+title e2e-todo-20260917
+
+component todo-webapp as "Todo Web App" web-application
+component todo-api as "Todo API" service
+component todo-db as "Todo Database" database
+
+east user-auth as "Dataplane Thunder" identity-server
+
+north -> todo-webapp
+north -> todo-api
+
+todo-webapp -> todo-api
+todo-webapp -> user-auth
+todo-api -> user-auth
+todo-api -> todo-db

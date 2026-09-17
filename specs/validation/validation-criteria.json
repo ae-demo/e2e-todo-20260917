@@ -1,0 +1,58 @@
+{
+  "requirements": [
+    {
+      "id": "REQ-001",
+      "statement": "An End User can log in through the platform's single sign-on to reach their personal todo list.",
+      "stories": [1],
+      "criteria": [
+        { "id": "AC-001-a", "must": "An unauthenticated visitor is directed to sign in before reaching the todo list", "method": "e2e" },
+        { "id": "AC-001-b", "must": "After a successful sign-in, the End User lands on their own todo list", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-002",
+      "statement": "An End User can add a new todo.",
+      "stories": [2],
+      "criteria": [
+        { "id": "AC-002-a", "must": "A signed-in End User can submit a new todo with a title", "method": "e2e" },
+        { "id": "AC-002-b", "must": "The newly added todo appears in the End User's list", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-003",
+      "statement": "An End User can see their list of todos.",
+      "stories": [3],
+      "criteria": [
+        { "id": "AC-003-a", "must": "A signed-in End User sees all of their own todos listed", "method": "e2e" },
+        { "id": "AC-003-b", "must": "An End User never sees another End User's todos", "method": "manual" }
+      ]
+    },
+    {
+      "id": "REQ-004",
+      "statement": "An End User can update a todo, including marking it done.",
+      "stories": [4],
+      "criteria": [
+        { "id": "AC-004-a", "must": "A signed-in End User can edit the title of an existing todo", "method": "e2e" },
+        { "id": "AC-004-b", "must": "A signed-in End User can mark a todo as done", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-005",
+      "statement": "An End User can delete a todo.",
+      "stories": [5],
+      "criteria": [
+        { "id": "AC-005-a", "must": "A signed-in End User can delete one of their todos", "method": "e2e" },
+        { "id": "AC-005-b", "must": "A deleted todo no longer appears in the End User's list", "method": "e2e" }
+      ]
+    },
+    {
+      "id": "REQ-006",
+      "statement": "A signed-in End User's todos persist across a page reload and later visits.",
+      "stories": [6],
+      "criteria": [
+        { "id": "AC-006-a", "must": "After adding a todo and reloading the page, the todo is still present", "method": "e2e" },
+        { "id": "AC-006-b", "must": "Todos remain present when the End User returns in a later session", "method": "manual" }
+      ]
+    }
+  ]
+}

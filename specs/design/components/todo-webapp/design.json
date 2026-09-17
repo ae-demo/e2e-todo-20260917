@@ -1,0 +1,17 @@
+{
+  "name": "todo-webapp",
+  "type": "web-application",
+  "version": "0.1.0",
+  "language": "TypeScript",
+  "buildpack": "docker",
+  "appPath": "todo-webapp",
+  "entrypoint": "deployment/web-application",
+  "exposure": "internet",
+  "dependencies": [
+    { "kind": "component", "name": "todo-api", "description": "Lists, creates, updates and deletes the signed-in End User's todos, reached through /api." },
+    { "kind": "platform-resource", "name": "user-auth", "resourceType": "thunder-app", "description": "Signs the End User in through Dataplane Thunder before the app is used." }
+  ],
+  "description": "Single-page Todo app: an End User signs in through Dataplane Thunder, then adds, views, updates, and deletes todos in their personal list, which persists across reloads. Calls the API through the /api path. Does not implement its own sign-in form and does not manage any data beyond the caller's own todos.",
+  "stories": [1, 2, 3, 4, 5, 6],
+  "skillsPinned": ["wireframes", "react-webapp", "oxygen-ui-design-system", "thunder-authentication"]
+}

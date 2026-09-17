@@ -24,7 +24,7 @@ A small, complete Todo web app: a user signs in once through the platform's sing
 ## Product Decisions
 
 - **Sign-in**: every session is authenticated end-to-end through the platform's SSO layer, backed by the Dataplane Thunder identity provider. The identity provider issuer is the development dataplane IdP (`https://development-idp.apps.wso2con.openchoreo-poc.choreo.dev`) — not the Platform Thunder instance. This is a hard product requirement carried over from the project brief, not a default.
-- **Todo visibility**: each End User sees and edits only their own todos — a private personal list, not a list shared across users. *assumed*
+- **Todo visibility**: each End User sees and edits only their own todos — a private personal list, not a list shared across users.
 - **API protection**: the todo API sits behind the organization's development API platform gateway rather than being reachable directly; only requests carrying a valid Dataplane Thunder (T2) session succeed, and a Platform Thunder (T1) session must be rejected. This is a hard product requirement carried over from the project brief, not a default.
 - **Persistence**: todos are stored in a durable, dedicated database provisioned for this project (not a shared or sample database), so data survives reloads, restarts, and future visits. This is a hard product requirement carried over from the project brief, not a default.
 - **Frontend/backend integration**: the web app reaches the todo API through a single `/api` path rather than a separately hosted API origin. This is a hard product requirement carried over from the project brief, not a default.
